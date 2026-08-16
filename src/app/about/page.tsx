@@ -10,7 +10,6 @@ const stack = [
   ["Markdown", "Essays as plain files, versioned in git"],
   ["Tailwind CSS 4", "Styling"],
   ["TypeScript", "Type safety"],
-  ["Vercel", "Hosting and deployments"],
 ] as const;
 
 export default function AboutPage() {
@@ -29,9 +28,9 @@ export default function AboutPage() {
         <div className="md:col-span-7">
           <div className="prose-editorial">
             <p className="lede">
-              My name is De&apos;. By day, I work in the Enterprise segment at
-              Vercel, helping drive growth for one of the world&apos;s leading
-              web infrastructure companies.
+              My name is De&apos;. By day, I work in enterprise sales, helping
+              drive growth for a company building the infrastructure behind the
+              modern web.
             </p>
             <p>
               But I&apos;m more than a job title. This space is my personal
