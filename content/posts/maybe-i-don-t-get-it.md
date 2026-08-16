@@ -2,7 +2,7 @@
 title: "Maybe I Don't Get It"
 date: "2025-10-18"
 category: "Truth"
-excerpt: "Be ambitious, but don't outshine anyone. On the restructured oppression of Black excellence — and why I'd rather build a home than take a seat."
+excerpt: "Be ambitious, but don't outshine anyone. On excellence that gets managed instead of rewarded — and why I'd rather build a home than take a seat."
 video: "https://www.youtube.com/watch?v=-HM2S6TVYII"
 ---
 

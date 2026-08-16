@@ -29,8 +29,7 @@ export default function AboutPage() {
         <div className="md:col-span-7">
           <div className="prose-editorial">
             <p>
-              My name is De&apos;. I&apos;m 25 and a proud mom to two
-              incredible kids. By day, I work in the Enterprise segment at
+              My name is De&apos;. By day, I work in the Enterprise segment at
               Vercel, helping drive growth for one of the world&apos;s leading
               web infrastructure companies.
             </p>

@@ -53,8 +53,8 @@ export default async function ArticlePage({
             <div>
               <p className="kicker border-b border-ink pb-2 mb-3">Byline</p>
               <p className="leading-relaxed">
-                De&apos;Anna Green — mom of two, Enterprise at Vercel, doing
-                the most on purpose.
+                De&apos;Anna Green — Enterprise at Vercel, doing the most on
+                purpose.
               </p>
             </div>
             {post.video && (
