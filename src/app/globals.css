@@ -50,13 +50,14 @@ body {
   margin-top: 1.5em;
 }
 
-.prose-editorial > p:first-of-type::first-letter {
-  font-family: var(--font-anton), Impact, sans-serif;
-  float: left;
-  font-size: 4.4em;
-  line-height: 0.82;
-  padding-right: 0.12em;
-  padding-top: 0.05em;
+/* Raised cap rather than a sunken drop cap: it stays on the first line, so it
+   never bleeds into the paragraph below no matter how short the lede is. */
+.prose-editorial p.lede::first-letter {
+  font-family: var(--font-lora), Georgia, serif;
+  font-weight: 700;
+  font-size: 2.6em;
+  line-height: 1;
+  letter-spacing: -0.02em;
   color: var(--accent);
 }
 

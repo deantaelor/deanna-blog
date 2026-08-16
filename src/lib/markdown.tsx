@@ -31,6 +31,7 @@ export function renderMarkdown(body: string): React.ReactNode {
   const output: React.ReactNode[] = [];
   let list: ListBlock | null = null;
   let key = 0;
+  let firstParagraph = true;
 
   const flushList = () => {
     if (!list) return;
@@ -73,7 +74,13 @@ export function renderMarkdown(body: string): React.ReactNode {
         <blockquote key={key++}>{renderInline(block.slice(2))}</blockquote>
       );
     } else {
-      output.push(<p key={key++}>{renderInline(block)}</p>);
+      const lede = firstParagraph;
+      firstParagraph = false;
+      output.push(
+        <p key={key++} className={lede ? "lede" : undefined}>
+          {renderInline(block)}
+        </p>
+      );
     }
   }
   flushList();
