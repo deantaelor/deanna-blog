@@ -28,7 +28,7 @@ export default function AboutPage() {
       <div className="grid md:grid-cols-12 gap-8 py-10 md:py-14">
         <div className="md:col-span-7">
           <div className="prose-editorial">
-            <p>
+            <p className="lede">
               My name is De&apos;. By day, I work in the Enterprise segment at
               Vercel, helping drive growth for one of the world&apos;s leading
               web infrastructure companies.
