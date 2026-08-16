@@ -1,69 +1,94 @@
-import Image from "next/image";
+import Link from "next/link";
+import { getAllPosts, formatDate } from "@/lib/posts";
 
 export default function Home() {
+  const posts = getAllPosts();
+  const [feature, ...rest] = posts;
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="mx-auto max-w-6xl px-4 md:px-6">
+      <section className="border-b-2 border-ink py-10 md:py-16 grid md:grid-cols-12 gap-8">
+        <div className="md:col-span-8">
+          <p className="kicker text-accent mb-4">
+            The Latest — {formatDate(feature.date)}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link href={`/blog/${feature.slug}`} className="group">
+            <h1 className="headline text-5xl md:text-7xl lg:text-8xl group-hover:text-accent transition-colors">
+              {feature.title}
+            </h1>
+          </Link>
+          <p className="mt-6 text-lg md:text-xl max-w-2xl leading-relaxed">
+            {feature.excerpt}
+          </p>
+          <Link
+            href={`/blog/${feature.slug}`}
+            className="kicker inline-block mt-6 border-2 border-ink px-5 py-3 hover:bg-ink hover:text-paper transition-colors"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            Read the essay →
+          </Link>
         </div>
-      </main>
+        <div className="md:col-span-4 md:border-l md:border-ink md:pl-8 flex flex-col justify-between gap-8">
+          <div>
+            <p className="kicker border-b border-ink pb-2 mb-4">
+              In this issue
+            </p>
+            <ul className="space-y-3">
+              {posts.map((p, i) => (
+                <li key={p.slug} className="flex gap-3 items-baseline">
+                  <span className="headline text-accent text-xl w-7 shrink-0">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Link
+                    href={`/blog/${p.slug}`}
+                    className="hover:text-accent transition-colors leading-snug"
+                  >
+                    {p.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <blockquote className="border-t-2 border-ink pt-4 italic text-lg leading-relaxed">
+            &ldquo;I&apos;d rather build a home: a warm, inviting home that
+            welcomes everyone to find their way in.&rdquo;
+            <footer className="kicker not-italic mt-2">
+              — Maybe I Don&apos;t Get It
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="py-10 md:py-14">
+        <div className="flex items-baseline justify-between border-b-2 border-ink pb-3 mb-8">
+          <h2 className="headline text-3xl md:text-4xl">More essays</h2>
+          <Link
+            href="/blog"
+            className="kicker hover:text-accent transition-colors"
+          >
+            All essays →
+          </Link>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-ink border border-ink">
+          {rest.map((p) => (
+            <Link
+              key={p.slug}
+              href={`/blog/${p.slug}`}
+              className="group bg-paper p-6 flex flex-col gap-4 hover:bg-ink hover:text-paper transition-colors"
+            >
+              <p className="kicker text-accent">{p.category}</p>
+              <h3 className="headline text-2xl leading-tight group-hover:text-paper">
+                {p.title}
+              </h3>
+              <p className="text-sm leading-relaxed opacity-80 flex-1">
+                {p.excerpt}
+              </p>
+              <p className="kicker opacity-60">
+                {formatDate(p.date)} · {p.readingTime} min
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
