@@ -10,6 +10,7 @@ const stack = [
   ["Markdown", "Essays as plain files, versioned in git"],
   ["Tailwind CSS 4", "Styling"],
   ["TypeScript", "Type safety"],
+  ["Devin", "Built and maintained with an AI engineer"],
 ] as const;
 
 export default function AboutPage() {
