@@ -21,11 +21,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "On Wax — De'Anna Green",
-    template: "%s — On Wax",
+    default: "Deliberate — De'Anna Green",
+    template: "%s — Deliberate",
   },
   description:
-    "Putting thoughts on wax. Essays on ambition, impact, and thinking past the ceiling, by De'Anna Green.",
+    "Essays on ambition, impact, and thinking past the ceiling, by De'Anna Green. Doing the most, on purpose.",
 };
 
 const nav = [
@@ -60,7 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <div className="border-t border-ink py-4 md:py-6 flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               <Link href="/" className="block">
                 <span className="headline text-6xl md:text-8xl">
-                  On&nbsp;Wax<span className="text-accent">.</span>
+                  Deliberate<span className="text-accent">.</span>
                 </span>
               </Link>
               <nav className="flex gap-6 pb-1">
